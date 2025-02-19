@@ -9,14 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('wedding_packages', function (Blueprint $table) {
             $table->id();
-            $table->stirng('name');
+            $table->string('name');
             $table->decimal('price', 10, 2);
             $table->text('description');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');   
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
