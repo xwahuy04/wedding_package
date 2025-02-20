@@ -17,4 +17,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::group(['middleware' => ['role::admin']], function () {
+    // Route::get('wedding-packages', [WeddingPackageController::class]);
+}); 
+
+Route::group(['middleware' => ['role' => 'user']], function () {
+    // Route::get('wedding-packages/{id}', [WeddingPackageController::class, 'show']);
+    // Route::post('wedding-packages/book', [WeddingPackageController::class, 'book']);
+});
+
 require __DIR__.'/auth.php';
